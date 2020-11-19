@@ -12,9 +12,10 @@ var calendarContainer = $("#calendar-container");
 //Create calendar rows adding a data-attribute to each row
 for (var i = 9; i < 24; i++) {
   var newRow = $("<div>").addClass("container-fluid d-flex px-2 my-row mx-2");
-  var rowTime = $("<div>")
-    .addClass("text-right col-1 p-3 mr-2 text-nowrap border-top")
-    .attr("data-calendarTime", i);
+  var rowTime = $("<div>").addClass(
+    "text-right col-1 p-3 mr-2 text-nowrap border-top"
+  );
+  // .attr("data-calendarTime", i);
   var rowtimeText = i + " AM";
   if (i == 12) {
     rowtimeText = i + " PM";
@@ -33,15 +34,15 @@ for (var i = 9; i < 24; i++) {
     .addClass("saveBtn w-auto p-4 bg-info rounded-right")
     .attr("data-calendarTime", i)
     // .on("click", function () {
-    //   saveInLocal(i, $('input[data-calendarTime="' + i + '"]').val);
+
     // });
     .on("click", function () {
-      saveInLocal(i, $('input[data-calendarTime="9"]').val);
+      // saveInLocal(i, $('input[data-calendarTime="9"]').val());
+      saveInLocal(i, $('input[data-calendarTime="' + i + '"]').val());
     });
 
   // .click(saveInLocal(i, $('input[data-calendarTime=" + i + "]').val()));
   // console.log(i, $('input[data-calendarTime="' + i + '"]').val());
-  console.log($('input[data-calendarTime="9"]').val());
 
   // $('"data-calendarTime="9"', "");
 
@@ -64,12 +65,13 @@ for (var i = 9; i < 24; i++) {
   }
   newRow.append(rowTime, rowSchedule, rowSaveButtonContainer);
   calendarContainer.append(newRow);
+  console.log(i, $('input[data-calendarTime="9"]').val());
 }
 
 //save the calendar text to local storage
 function saveInLocal(calendarPosition, meetingText) {
   console.log(calendarPosition, meetingText);
-  // localStorage.setItem(calendarPosition, meetingText);
+  localStorage.setItem(calendarPosition, meetingText);
 }
 
 //nice to have - make onclick action on button which changes the
