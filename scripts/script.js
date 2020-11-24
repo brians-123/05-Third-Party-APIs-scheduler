@@ -5,7 +5,7 @@ todaysDate.textContent = moment().format("dddd, MMM do, YYYY");
 //idea is to use military time to make comparisons easier
 //each event area will have an id of the military time
 var momentHour = moment().format("H");
-console.log(momentHour);
+// console.log(momentHour);
 
 var calendarContainer = $("#calendar-container");
 
@@ -32,14 +32,7 @@ for (var i = 9; i < 24; i++) {
 
   var rowSaveButtonContainer = $("<div>")
     .addClass("saveBtn w-auto p-4 bg-info rounded-right")
-    .attr("data-calendarTime", i)
-    // .on("click", function () {
-
-    // });
-    .on("click", function () {
-      // saveInLocal(i, $('input[data-calendarTime="9"]').val());
-      saveInLocal(i, $('input[data-calendarTime="' + i + '"]').val());
-    });
+    .attr("data-calendarTime", i);
 
   // .click(saveInLocal(i, $('input[data-calendarTime=" + i + "]').val()));
   // console.log(i, $('input[data-calendarTime="' + i + '"]').val());
@@ -68,11 +61,70 @@ for (var i = 9; i < 24; i++) {
   console.log(i, $('input[data-calendarTime="9"]').val());
 }
 
+//when the loop finishes executing, it adds 1 to i, making it 24
+//this isn't what I want.
+//I'm going to move it outside the loop to add via event delegation
+
+// $(".saveBtn").on("click", function () {
+// saveInLocal(i, $('input[data-calendarTime="9"]').val());
+// saveInLocal("asdf", "123");
+//
+
+// saveInLocal(i, $('input[data-calendarTime="' + i + '"]').val());
+// console.log(i);
+// });
+
+// $("#saveBtn").on("click",function(){
+//   saveInLocal(i, $('input[data-calendarTime="' + i + '"]').val());
+// })
+
 //save the calendar text to local storage
+//commenting this out to try to use event delegation instead
+// function saveInLocal(calendarPosition, meetingText) {
+//   console.log(calendarPosition, meetingText);
+//   localStorage.setItem(calendarPosition, meetingText);
+// }
+
+//create an array to store data for the calendar text and positions
+//so we can pull them back out later
+var calendarData = [];
+
+//pull the data back out of localStorage and replace the existing placeholders
+console.log(JSON.parse(localStorage.getItem("WorkDayScheduler")));
+
+//get data out of local storage and push back to each element
+//later, this should go into the loop where I'm building each element
+// var calendarObj = JSON.parse(localStorage.getItem("WorkDayScheduler"));
+
+//use event delegation to grab the proper data element's value
 function saveInLocal(calendarPosition, meetingText) {
-  console.log(calendarPosition, meetingText);
-  localStorage.setItem(calendarPosition, meetingText);
+  console.log($(this).data("calendartime"));
+  console.log($(this).parent().children("input").val());
+
+  //save the data element for the button's time into local storage
+  //along with the text of the input box next to it
+  // console.log($(this).parent().text());
+
+  var thisCalendarPosition = console.log($(this).data("calendartime"));
+  var thisCalendarText = $(this).parent().children("input").val();
+  var thisCalendarObj = { thisCalendarPosition: thisCalendarText };
+
+  //need to push into the object first to prevent duplicates
+
+  calendarData.push(thisCalendarObj);
+  console.log(calendarData);
+
+  localStorage.setItem("WorkDayScheduler", JSON.stringify(calendarData));
 }
+
+$(function () {
+  $(".saveBtn").on("click", saveInLocal);
+});
+
+//all of these buttons have a data element
+//find the data element on the page and add a button click event to them
+
+//with the button click, execute the function outside of the loop where we're building the element
 
 //nice to have - make onclick action on button which changes the
 //background color to light red when data is saved
