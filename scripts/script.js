@@ -6,9 +6,11 @@ todaysDate.textContent = moment().format("dddd, MMM do, YYYY");
 //each event area will have an id of the military time
 var momentHour = moment().format("H");
 
+//create a variable to house the element for the calendar container
 var calendarContainer = $("#calendar-container");
 
-//Create calendar rows adding a data-attribute to each row
+//Create calendar rows adding a data-attribute to each row. playing with the idea of creating most html
+//dynamically for practice
 for (var i = 9; i < 24; i++) {
   var newRow = $("<div>").addClass("container-fluid d-flex px-2 my-row mx-2");
   var rowTime = $("<div>").addClass(
