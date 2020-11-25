@@ -10,6 +10,8 @@ The user will be able to save event text via clicking on the calendar checkbox i
 Upon reloading the page, it will reload the event text into the appropriate hour's events.
 
 Most of the html is being dynamically generated in the javascript. Although this wasn't a requirement from the assignment, I wanted to gain more experience with this functionality.
+
+The application will be hosted here: [GitHub pages](https://brians-123.github.io/05-Third-Party-APIs-scheduler/)
 ```
 
 ## User Story
