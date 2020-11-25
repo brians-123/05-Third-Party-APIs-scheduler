@@ -2,7 +2,7 @@
 
 This application will allow users to track their day's events in a calendar format using moment.js for time comparisons and bootstrap for stylesheet functionality.
 
-As the hour of day changes, the calendar will update the background for each event to be gray for in the past, red for the current hour and green for upcoming. This is accomplished by using the moment.js library ![Moment.js library](https://momentjs.com/).
+As the hour of day changes, the calendar will update the background for each event to be gray for in the past, red for the current hour and green for upcoming. This is accomplished by using the moment.js library [Moment.js library](https://momentjs.com/).
 
 The user will be able to save event text via clicking on the calendar checkbox icon on the far right. This icon will grow and change colors upon hover to clearly show users where to save. When saved, the text will go into local storage along with the ID field. The data will be saved in local storage inside an object to prevent duplicate values from being entered - allowing overwriting each calendar postion.
 
