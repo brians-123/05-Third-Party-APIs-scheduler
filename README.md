@@ -1,16 +1,18 @@
 ## Description
 
+The application will be hosted here: [GitHub pages](https://brians-123.github.io/05-Third-Party-APIs-scheduler/)
+
+```
 This application will allow users to track their day's events in a calendar format using moment.js for time comparisons and bootstrap for stylesheet functionality.
 
-As the hour of day changes, the calendar will update the background for each event to be gray for in the past, red for the current hour and green for upcoming. This is accomplished by using the moment.js library [Moment.js library](https://momentjs.com/).
+As the hour of day changes, the calendar will update the background for each event to be gray for in the past, red for the current hour and green for upcoming. This is accomplished by using the moment.js library.
 
 The user will be able to save event text via clicking on the calendar checkbox icon on the far right. This icon will grow and change colors upon hover to clearly show users where to save. When saved, the text will go into local storage along with the ID field. The data will be saved in local storage inside an object to prevent duplicate values from being entered - allowing overwriting each calendar postion.
 
 Upon reloading the page, it will reload the event text into the appropriate hour's events.
 
 Most of the html is being dynamically generated in the javascript. Although this wasn't a requirement from the assignment, I wanted to gain more experience with this functionality.
-
-The application will be hosted here: [GitHub pages](https://brians-123.github.io/05-Third-Party-APIs-scheduler/)
+```
 
 ## User Story
 
