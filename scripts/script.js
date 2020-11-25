@@ -66,53 +66,28 @@ var thisCalendarObj = {};
 //parse the values in objects back from local storage to render to the page
 if (JSON.parse(localStorage.getItem("WorkDayScheduler")) != null) {
   thisCalendarObj = JSON.parse(localStorage.getItem("WorkDayScheduler"));
-  $("#9").val(thisCalendarObj[9]);
-  $("#10").val(thisCalendarObj[10]);
-  $("#11").val(thisCalendarObj[11]);
-  $("#12").val(thisCalendarObj[12]);
-  $("#13").val(thisCalendarObj[13]);
-  $("#14").val(thisCalendarObj[14]);
-  $("#15").val(thisCalendarObj[15]);
-  $("#16").val(thisCalendarObj[16]);
-  $("#17").val(thisCalendarObj[17]);
-  $("#18").val(thisCalendarObj[18]);
-  $("#19").val(thisCalendarObj[19]);
-  $("#20").val(thisCalendarObj[20]);
-  $("#21").val(thisCalendarObj[21]);
-  $("#22").val(thisCalendarObj[22]);
-  $("#23").val(thisCalendarObj[23]);
+
+  for (var j = 9; j < 24; j++) {
+    $("#" + j).val(thisCalendarObj[j]);
+  }
 }
 
 //the save button will save the new text for the current line into local storage
 $(".saveBtn").on("click", function saveInLocal() {
+  //take the 9-23 value from the data category on the element
   var thisCalendarPosition = $(this).data("calendar-time");
-
+  //traverse the DOM to find the input box and add it's text to the variable
   var thisCalendarText = $(this).parent().children("input").val();
-
+  //Uses the above to variables to add the new text into the thisCalendarObj object
   thisCalendarObj[thisCalendarPosition] = thisCalendarText;
-
   localStorage.setItem("WorkDayScheduler", JSON.stringify(thisCalendarObj));
 
-  if (JSON.parse(localStorage.getItem("WorkDayScheduler")) !== null) {
-    thisCalendarObj = JSON.parse(localStorage.getItem("WorkDayScheduler"));
+  thisCalendarObj = JSON.parse(localStorage.getItem("WorkDayScheduler"));
 
-    $.each(thisCalendarObj, function (key, value) {
-      if (value != null) {
-        //Leaving this in for 2nd to last commit. I'd like to get help on the reason as to why this didn't work.
-        //Why couldn't I write to the value of an element using a variable in jquery? This was an attempt
-        //to look up the element by data attribute.
-        var foundDataAttributeEl = $("input").find(
-          "[data-calendar-text='" + key + "']"
-        );
-        $("input")
-          .find("[data-calendar-text='" + key + "']")
-          .val("123123123");
-
-        //loop through the key value pairs and display the appropriate value in the calendar
-        if (key < 24) {
-          $(`#` + key).val(thisCalendarObj[key]);
-        }
-      }
-    });
-  }
+  $.each(thisCalendarObj, function (key, value) {
+    //loop through the key value pairs and display the appropriate value in the calendar
+    if (key < 24) {
+      $(`#` + key).val(thisCalendarObj[key]);
+    }
+  });
 });
