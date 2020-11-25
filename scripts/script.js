@@ -11,7 +11,7 @@ var calendarContainer = $("#calendar-container");
 
 //Create calendar rows adding a data-attribute to each row. playing with the idea of creating most html
 //dynamically for practice
-for (var i = 9; i < 24; i++) {
+for (var i = 9; i < 18; i++) {
   var newRow = $("<div>").addClass("container-fluid d-flex px-2 my-row mx-2");
   var rowTime = $("<div>").addClass(
     "text-right col-1 p-3 mr-2 text-nowrap border-top"
@@ -58,10 +58,6 @@ for (var i = 9; i < 24; i++) {
   calendarContainer.append(newRow);
 }
 
-//create an array to store data for the calendar text and positions
-//so we can pull them back out later
-var calendarData = [];
-
 //create an object for the calendar times and text
 var thisCalendarObj = {};
 
@@ -69,7 +65,7 @@ var thisCalendarObj = {};
 if (JSON.parse(localStorage.getItem("WorkDayScheduler")) != null) {
   thisCalendarObj = JSON.parse(localStorage.getItem("WorkDayScheduler"));
 
-  for (var j = 9; j < 24; j++) {
+  for (var j = 9; j < 18; j++) {
     $("#" + j).val(thisCalendarObj[j]);
   }
 }
@@ -88,7 +84,7 @@ $(".saveBtn").on("click", function saveInLocal() {
 
   $.each(thisCalendarObj, function (key, value) {
     //loop through the key value pairs and display the appropriate value in the calendar
-    if (key < 24) {
+    if (key < 18) {
       $(`#` + key).val(thisCalendarObj[key]);
     }
   });

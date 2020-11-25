@@ -1,22 +1,27 @@
-# 05 Third-Party APIs: Work Day Scheduler
+## Description
 
-Create a simple calendar application that allows the user to save events for each hour of the day. This app will run in the browser and feature dynamically updated HTML and CSS powered by jQuery.
+```
+This application will allow users to track their day's events in a calendar format using moment.js for time comparisons and bootstrap for stylesheet functionality.
 
-You'll need to use the [Moment.js library](https://momentjs.com/) to work with date and time. Be sure to read the documentation carefully and concentrate on using Moment.js in the browser.
+As the hour of day changes, the calendar will update the background for each event to be gray for in the past, red for the current hour and green for upcoming. This is accomplished by using the moment.js library [Moment.js library](https://momentjs.com/).
+
+The user will be able to save event text via clicking on the calendar checkbox icon on the far right. This icon will grow and change colors upon hover to clearly show users where to save. When saved, the text will go into local storage along with the ID field. The data will be saved in local storage inside an object to prevent duplicate values from being entered - allowing overwriting each calendar postion.
+
+Upon reloading the page, it will reload the event text into the appropriate hour's events.
+
+Most of the html is being dynamically generated in the javascript. Although this wasn't a requirement from the assignment, I wanted to gain more experience with this functionality.
+```
 
 ## User Story
 
-Implement the following user story:
-
 ```
-AS AN employee with a busy schedule
-I WANT to add important events to a daily planner
-SO THAT I can manage my time effectively
+AS AN employee managing my daily schedule
+I WANT to track my events by hour
+SO THAT I can track my upcoming meetings and see what I've done for the day
+
 ```
 
 ## Acceptance Criteria
-
-Aim to meet the following acceptance criteria:
 
 ```
 GIVEN I am using a daily planner to create a schedule
@@ -34,17 +39,22 @@ WHEN I refresh the page
 THEN the saved events persist
 ```
 
-The following animation demonstrates the application functionality:
+## Demo
 
-![A user clicks on slots on the color-coded calendar and edits the events.](./Assets/05-third-party-apis-homework-demo.gif)
+```
+Here is a demo of the application functionality:
+```
 
-## Review
+![Demo of saving events, reloading page, seeing calendar coloring and hovers.](./Assets/Work-Day-Scheduler.gif)
 
-You are required to submit the following for review:
+## Licensing
 
-* The URL of the deployed application
+```
+This application should not be used elsewhere
+```
 
-* The URL of the GitHub repository, with a unique name and a README describing the project
+## Credits
 
-- - -
-© 2020 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
+```
+Acceptance crieria © 2020 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
+```
