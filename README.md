@@ -47,7 +47,7 @@ THEN the saved events persist
 Here is a demo of the application functionality:
 ```
 
-![Demo of saving events, reloading page, seeing calendar coloring and hovers.](./Assets/Work-Day-Scheduler.gif)
+![Demo of saving events, reloading page, seeing calendar coloring and hovers.](./Assets/Work-Day-Scheduler-Video.gif)
 
 ## Licensing
 
